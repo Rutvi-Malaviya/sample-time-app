@@ -1,4 +1,5 @@
 from flask import Flask
+import time
 
 app = Flask(__name__)
 
@@ -7,6 +8,10 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello world!'
     
+    
+@app.route('/time')
+def getTime():
+    return "current time: " + time.strftime("%H:%M:%S", time.localtime()) + " UTC";
 
 app.run(host='0.0.0.0',
         port=8080,
